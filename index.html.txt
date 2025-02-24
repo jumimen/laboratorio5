@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial Generativa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .hero-section {
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ia.png-fKhR9EXG4xOJwoJohvHNErN5nMLy7P.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar {
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(13, 110, 253, 0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+        }
+
+        .nav-link {
+            color: white !important;
+            position: relative;
+            padding: 0.5rem 1rem !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        section {
+            padding: 5rem 0;
+            scroll-margin-top: 70px;
+        }
+
+        .tech-card {
+            background: rgba(13, 110, 253, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .app-card {
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .challenge-item {
+            background: rgba(220, 53, 69, 0.1);
+            border-left: 4px solid #dc3545;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .challenge-item:hover {
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">IA Generativa</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#definicion">¿Qué es?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#aplicaciones">Aplicaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#desafios">Desafíos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio" class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Inteligencia Artificial Generativa</h1>
+            <p class="hero-subtitle">Explorando el futuro de la creación digital</p>
+            <a href="#definicion" class="btn btn-outline-light btn-lg">Descubre más</a>
+        </div>
+    </section>
+
+    <section id="definicion" class="bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">¿Qué es la Inteligencia Artificial Generativa?</h2>
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <p class="lead text-center">
+                        La Inteligencia Artificial Generativa es una rama de la inteligencia artificial que se enfoca en la creación de contenido nuevo a partir de datos existentes. A diferencia de otras IA que solo analizan o clasifican información, la IA generativa puede producir texto, imágenes, audio, código y más.
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="tech-card">
+                        <h4>Redes Generativas Antagónicas (GANs)</h4>
+                        <p>Modelos que enfrentan dos redes neuronales para crear imágenes realistas.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="tech-card">
+                        <h4>Transformers</h4>
+                        <p>Arquitectura clave en modelos como GPT y BERT para la generación de texto coherente.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="tech-card">
+                        <h4>Modelos de difusión</h4>
+                        <p>Utilizados en herramientas como Stable Diffusion para generar imágenes desde texto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="aplicaciones">
+        <div class="container">
+            <h2 class="text-center mb-5">Aplicaciones y Casos de Uso</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card app-card">
+                        <div class="card-body">
+                            <h3 class="card-title h5">🎨 Arte y diseño</h3>
+                            <p class="card-text">Creación de ilustraciones, logotipos y obras digitales con DALL·E y MidJourney.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card app-card">
+                        <div class="card-body">
+                            <h3 class="card-title h5">🏥 Salud y biotecnología</h3>
+                            <p class="card-text">Modelos generativos para descubrimiento de fármacos e imágenes médicas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card app-card">
+                        <div class="card-body">
+                            <h3 class="card-title h5">📚 Educación</h3>
+                            <p class="card-text">Generación de materiales de estudio y chatbots educativos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="desafios" class="bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Desafíos y Consideraciones Éticas</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="challenge-item">
+                        <h5>⚠️ Sesgo algorítmico</h5>
+                        <p>La IA puede reflejar y amplificar prejuicios existentes en los datos.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h5>⚠️ Derechos de autor</h5>
+                        <p>Debate sobre la propiedad intelectual de obras creadas por IA.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h5>⚠️ Desinformación</h5>
+                        <p>Riesgo de crear contenido falso o manipulado.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h5>⚠️ Sostenibilidad</h5>
+                        <p>Alto consumo energético en el entrenamiento de modelos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 IA Generativa. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Función para manejar el cambio de estilo en la navbar al hacer scroll
+        function handleScroll() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Función para actualizar la sección activa en el menú
+        function updateActiveSection() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+                    const currentId = section.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${currentId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        // Cerrar menú hamburguesa al hacer clic en un enlace
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    navbarCollapse.classList.remove('show');
+                }
+            });
+        });
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            handleScroll();
+            updateActiveSection();
+        });
+
+        // Inicializar el estado activo al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            handleScroll();
+            updateActiveSection();
+        });
+    </script>
+</body>
+</html>
